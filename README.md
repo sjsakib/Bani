@@ -1,1 +1,1 @@
-#বাণী
+Bani is a messenger bot built with web.py. You can clone this project to build your own messenger bot. I hosted this to [PythonAnywhere](https://www.pythonanywhere.com). Note that I don't provide the contents here. It took a long time to collect the quotes. So if you want to make your own bot collect them youself or come up with your own idea.
