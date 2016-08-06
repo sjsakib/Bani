@@ -16,7 +16,7 @@ class Hook:
     def GET(self):
         req = web.input()
         try:
-            if(req['hub.verify_token'] == '****'):
+            if(req['hub.verify_token'] == SECRET):
                 return req['hub.challenge']
             else:
                 return 'Wrong Token'

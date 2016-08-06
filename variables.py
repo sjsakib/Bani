@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 API_URL = 'https://graph.facebook.com/v2.7/me/messages?access_token='
 
-ACCESS_TOKEN = '********'
+SECRET = "****"
+
+ACCESS_TOKEN = '*****'
 
 WELCOME_MESSAGE = u"স্বাগতম। আমাদের Bot ব্যবহার করার জন্য ধন্যবাদ"
 
