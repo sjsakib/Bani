@@ -1,0 +1,3 @@
+MySQL-python
+web.py
+requests
