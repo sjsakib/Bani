@@ -20,3 +20,19 @@ CREATE TABLE aliases (
 )
 CHARACTER SET utf8 COLLATE utf8_general_ci
 ENGINE = MyISAM;
+
+
+CREATE TABLE geeky_quotes (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    text VARCHAR(2000) NOT NULL,
+    author VARCHAR(200)
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci
+ENGINE = MyISAM;
+
+CREATE TABLE geeky_aliases (
+    alias VARCHAR(200) NOT NULL PRIMARY KEY,
+    cat VARCHAR(200) NOT NULL
+)
+CHARACTER SET utf8 COLLATE utf8_general_ci
+ENGINE = MyISAM;
