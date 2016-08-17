@@ -61,6 +61,13 @@ def checkCat(text,con):
             return -1
         else:
             return cur.fetchone()[0]
+def checkGeekyCat(text,con):
+    with con as cur:
+        cur.execute(u"""SELECT cat FROM geeky_aliases WHERE alias = '{}'""".format(text))
+        if(cur.rowcount == 0):
+            return -1
+        else:
+            return cur.fetchone()[0]
 
 def getByCat(cat,con):
     with con as cur:
@@ -69,6 +76,19 @@ def getByCat(cat,con):
         cur.execute(u"""SELECT quote_id FROM {} WHERE id = {}""".format(cat,random.randint(1,total)))
         quote_id = cur.fetchone()[0]
         cur.execute(u"""SELECT text,author FROM quotes WHERE id = {}""".format(quote_id))
+        data = cur.fetchone()
+
+        if(data[1]): return data[0]+u'\n--- '+data[1]
+        else: return data[0]
+
+
+def getByGeekyCat(cat,con):
+    with con as cur:
+        cur.execute(u"""SELECT COUNT(*) FROM {}""".format(cat))
+        total = cur.fetchone()[0]
+        cur.execute(u"""SELECT quote_id FROM {} WHERE id = {}""".format(cat,random.randint(1,total)))
+        quote_id = cur.fetchone()[0]
+        cur.execute(u"""SELECT text,author FROM geeky_quotes WHERE id = {}""".format(quote_id))
         data = cur.fetchone()
 
         if(data[1]): return data[0]+u'\n--- '+data[1]
@@ -100,10 +120,15 @@ def respond(user,message):
     else:
         cat = checkCat(message,con)
         if(cat == -1):
-            #print INSTRUCTIONS_MESSAGE
-            sendMessage(user,INSTRUCTIONS_MESSAGE)
-            with open('log','a') as f:
-                f.write('Failed to respond: '+message+'\n')
+            cat = checkGeekyCat(message,con)
+            if(cat == -1):
+                #print INSTRUCTIONS_MESSAGE
+                sendMessage(user,INSTRUCTIONS_MESSAGE)
+                with open('log','a') as f:
+                    f.write('Failed to respond: '+message+'\n')
+            else:
+                mess = getByGeekyCat(cat,con)
+                sendMessage(user,mess)
         else:
             mess = getByCat(cat,con)
             #print mess

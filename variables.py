@@ -3,7 +3,7 @@ API_URL = 'https://graph.facebook.com/v2.7/me/messages?access_token='
 
 SECRET = "****"
 
-ACCESS_TOKEN = '*****'
+ACCESS_TOKEN = '***REMOVED***'
 
 WELCOME_MESSAGE = u"স্বাগতম। আমাদের Bot ব্যবহার করার জন্য ধন্যবাদ"
 
@@ -15,8 +15,8 @@ INSTRUCTIONS_MESSAGE = u"Random বাণী পেতে random লিখে �
 
 DB_CONFIG = {
     'user':'sjsakib',
-    'host':'****',
-    'passwd':'****',
+    'host':'sjsakib.mysql.pythonanywhere-services.com',
+    'passwd':'***REMOVED***',
     'db':'sjsakib$Bani',
     'charset':'utf8'
 }

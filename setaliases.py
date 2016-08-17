@@ -8,15 +8,16 @@ f  = open("aliases",'r');
 
 with con as cur:
     line = f.readline()[:-1]
-    liene = line.decode('utf-8')
+    line = line.decode('utf-8')
     line = line.split('-')
     al = line[0]
     als = line[1].split(',')
     for a in als:
-        #cur.execute("INSERT INTO aliases VALUES('{}','{}')".format(a,al))
         try:
-            cur.execute("INSERT INTO aliases VALUES('{}','{}')".format(a,al))
+            #cur.execute("INSERT INTO aliases VALUES('{}','{}')".format(a,al))
+            cur.execute(u"""INSERT INTO geeky_aliases VALUES('{}','{}')""".format(a,al))
         except:
             print "Failed "+a+" "+al
+            raise
 
 
